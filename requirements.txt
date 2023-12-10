@@ -1,0 +1,16 @@
+torchmetrics==0.11.4
+pytorch_lightning==1.7.7
+torch
+torchvision
+diffusers
+transformers
+numpy
+einops
+tqdm
+Pillow
+opencv-python
+omegaconf
+invisible-watermark
+taming-transformers-rom1504 
+clip
+kornia

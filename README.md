@@ -20,3 +20,33 @@ That is to say, dont submit a PR with 1,000 lines of new comments and code. Grou
 
 If you are interested in looking at the stable diffusion code, but dont know where to start, you might find the best place for you
 by looking in the [scripts](scripts/) directory. In there, you will find starting points such as [txt2img.py](scripts/txt2img.py) and [img2img.py](scripts/img2img.py)
+
+
+## Dependancies
+
+To install required python dependencies, it is typical to run
+
+    pip install -r requirements.txt
+
+NOTE HOWEVER, that it is best practice to install it in "venv", and in fact,
+certain OSs like Ubuntu23 now require it!
+
+Full instructions would be:
+
+    sudo apt install python3-pip python3-venv # one time ever
+    python -m venv venv                       # one time ever
+    . venv/bin/activate
+
+This will make your prompt start with "(venv)". Any time you want to run things in here,
+you will need to be in that state
+
+## Running txt2img.py
+ 
+The code is a little wierd. Easiest way to run it could be as follows:
+(after doing the venv setup...)
+
+    cp scripts/txt2img.py .
+    ./txt2img.py --ckpt /path/to/sd1.5-model.ckpt
+
+Note that it wants an original .ckpt format file, so you are probably best off downloading
+one of those
