@@ -41,7 +41,9 @@ This will make your prompt start with "(venv)". Any time you want to run things 
 you will need to be in that state
 
 ## Running txt2img.py
- 
+
+(Note that you will require "over 4 gigs of VRAM" to do this. 6 gigs is fine)
+
 The code is a little wierd. Easiest way to run it could be as follows:
 (after doing the venv setup...)
 
@@ -49,4 +51,12 @@ The code is a little wierd. Easiest way to run it could be as follows:
     ./txt2img.py --ckpt /path/to/sd1.5-model.ckpt
 
 Note that it wants an original .ckpt format file, so you are probably best off downloading
-one of those
+one of those.
+
+If you want to set the original sd1.5 checkpoint as the default, so you dont have to use the --ckpt arg, you can do the following:
+
+    mkdir -p models/ldm/stable-diffusion-v1
+    cd models/ldm/stable-diffusion-v1
+    wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt
+    ln -s v1-5-pruned-emaonly.ckpt model.ckpt
+    
