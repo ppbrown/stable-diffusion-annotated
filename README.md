@@ -1,4 +1,4 @@
-## Stable Diffusion Annotated
+# Stable Diffusion Annotated
 
 This is a fork of stable diffusion v1.5, aka
 https://github.com/runwayml/stable-diffusion/
@@ -15,3 +15,8 @@ hopefully demonstrate, I know how to create readable code and documentation ;-)
 
 To ease the burden of code review, please try to submit PRs in readable chunks. 
 That is to say, dont submit a PR with 1,000 lines of new comments and code. Group it into relevant chunks, please!
+
+## Places to start
+
+If you are interested in looking at the stable diffusion code, but dont know where to start, you might find the best place for you
+by looking in the [scripts] directory. In there, you will find starting points such as txt2img.py and img2img.py
