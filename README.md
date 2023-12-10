@@ -13,3 +13,5 @@ are readability issues.
 My credentials for this, are that I've been in the industry for 30 years, and as the rest of my repos 
 hopefully demonstrate, I know how to create readable code and documentation ;-) 
 
+To ease the burden of code review, please try to submit PRs in readable chunks. 
+That is to say, dont submit a PR with 1,000 lines of new comments and code. Group it into relevant chunks, please!
