@@ -1,7 +1,14 @@
+
+"""
+Adapted from CLIP: https://github.com/openai/CLIP/blob/main/clip/model.py
+We import this file from ldm/models/diffusion/classifier.py
+ for EncoderUNetModel and UNetModel
+"""
+
 from abc import abstractmethod
-from functools import partial
+# unused? # from functools import partial
 import math
-from typing import Iterable
+# unused? # from typing import Iterable
 
 import numpy as np
 import torch as th
@@ -30,9 +37,6 @@ def convert_module_to_f32(x):
 
 ## go
 class AttentionPool2d(nn.Module):
-    """
-    Adapted from CLIP: https://github.com/openai/CLIP/blob/main/clip/model.py
-    """
 
     def __init__(
         self,
@@ -745,8 +749,16 @@ class UNetModel(nn.Module):
 class EncoderUNetModel(nn.Module):
     """
     The half UNet model with attention and timestep embedding.
-    For usage, see UNet.
+    For usage, see UNetModel.
     """
+
+    """
+    The "Full" UNetModel has additional arguments:
+        context (cross attention conditioning), and related args
+     Additionally, it applies "input", "middle", AND "output" blocks.
+     This class just applies "input" and "middle" blocks
+    """
+
 
     def __init__(
         self,
