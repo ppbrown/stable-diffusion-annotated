@@ -1,4 +1,12 @@
 # pytorch_diffusion + derived encoder decoder
+#
+# This file was originally the FULL version of the above, I guess?
+# However, in stable diffusion, there is a lot of unused code, so I removed it
+# from the live file.
+# That being said, there are routines in here that are educational, so it is kept
+# For educational purposes. To see a list of classes, just do
+#     grep '^class' model.py.full
+
 import math
 import torch
 import torch.nn as nn
