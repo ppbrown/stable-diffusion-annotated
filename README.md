@@ -65,4 +65,8 @@ If you want to set the original sd1.5 checkpoint as the default, so you dont hav
     cd models/ldm/stable-diffusion-v1
     wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt
     ln -s v1-5-pruned-emaonly.ckpt model.ckpt
-    
+
+Note that the original one is 4G. if you would like to use a 2G model file, you can get one from 
+https://civitai.com/models/6174?modelVersionId=11047
+
+Be sure to get the "pickletensor" format file.
