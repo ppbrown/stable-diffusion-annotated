@@ -1,8 +1,8 @@
 # TXT2IMG.py overview
 
-## Purpose:
+## Purpose of this file
 
-This file is intended to document4 low-level details of the command-line Stable Diffusion script, "txt2img.py"
+This file is intended to document low-level details of the command-line Stable Diffusion script, "txt2img.py"
 If you dont care about that, you probably don't want to bother reading the rest of this file!
 
 ## Formatting guide
@@ -17,7 +17,7 @@ because then github/md will render the tags as code, insetad of using them as in
 Unfortunately, this makes the document way less readable if viewed in the raw.
 A semi-nice way  to handle this is to use the github web editor directly, and use the Preview button before the Commit button.
 
-## Intention
+## Intended level of detail
 
 This is intended to eventually be a semi-deep dive into how Stable Diffusion works.
 At some point, this doc will be split up into separate documents, to give more details about relevant code sections.
