@@ -1,5 +1,10 @@
 # TXT2IMG.py overview
 
+## Purpose:
+
+This file is intended to document4 low-level details of the command-line Stable Diffusion script, "txt2img.py"
+If you dont care about that, you probably don't want to bother reading the rest of this file!
+
 ## Formatting guide
 This file is an attempt to document the high(ish)-level code paths that txt2img.py takes to render an image using stable diffusion.
 It is a merge of markdown language, and HTML, because
