@@ -50,23 +50,26 @@ you will need to be in that state
 (Note that you will require "over 4 gigs of VRAM" to do this. 6 gigs is fine)
 If you havent downloaded any models, etc. you will also need approximately 7 gigs of extra disk space.
 
-The code is set up a little wierdly. Easiest way to run it could be as follows:
 (after doing the venv setup...)
+You can call the txt2img.py script from anywhere; However, it will RUN
+from the top level of this repo, and write things under the "outputs" directory
+in the top level, by default
 
-    cp scripts/txt2img.py .
-    python txt2img.py --ckpt /path/to/sd1.5-model.ckpt
+    python scripts/txt2img.py --ckpt /path/to/sd1.5-model.ckpt
 
-Note that it requires an original .ckpt format file, so you are probably best off downloading
-one of those.
+The original version wanted .ckpt format file, but it has been slightly updated
+to accept .safetensors format files as well. You must keep the name ending with ".safetensor"
 
-If you want to set the original sd1.5 checkpoint as the default, so you dont have to use the --ckpt arg, you can do the following:
+
+If you want to set the original sd1.5 checkpoint (or some other one)
+as the default, so you dont have to use the --ckpt arg, you can do the following:
 
     mkdir -p models/ldm/stable-diffusion-v1
     cd models/ldm/stable-diffusion-v1
     wget https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.ckpt
     ln -s v1-5-pruned-emaonly.ckpt model.ckpt
 
-Note that the original one is 4G. if you would like to use a 2G model file, you can get one from 
+Note1: the original one is 4G. if you would like to use a 2G model file, you can get one from 
 https://civitai.com/models/6174?modelVersionId=11047
 
-Be sure to get the "pickletensor" format file.
+Note2: If you want to use a model in safetensor format, the name must end in ".safetensor". Therefore, if you want that one to be default, you will have to edit the script to change the value of 'default_model_path'
