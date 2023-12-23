@@ -43,10 +43,15 @@ prompt = "a photo of an ast ronaut riding a horse on mars"
 #pipe.enable_sequential_cpu_offload()
 
 
-# If you dont enable this... it will technically still "run"
+# If you don't enable this... it will technically still "run"
 # with 4gigs of vram, but it will be at 1/8 the speed
 pipe.enable_xformers_memory_efficient_attention()
 
+""" Debugger tip: The first time, use "step into" feature of your debugger
+    repeatedly until you get to StableDiffusionPipeline:__call__()
+    Then you will want to read the code, and/or use normal steps, until you 
+    find a part that particularly interests you.
+"""
 image = pipe(prompt,num_inference_steps=20).images[0]
 
 image.show()
