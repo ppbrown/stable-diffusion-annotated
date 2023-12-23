@@ -21,6 +21,12 @@ That is to say, dont submit a PR with 1,000 lines of new comments and code. Grou
 If you are interested in looking at the stable diffusion code, but dont know where to start, you might find the best place for you
 by looking in the [scripts](scripts/) directory. In there, you will find starting points such as [txt2img.py](scripts/txt2img.py) and [img2img.py](scripts/img2img.py)
 
+Of additional interest, may be
+[pipeline_comparison.py](scripts/pipeline_comparison.py),
+a wrapper around the modern day diffusion libraries. It runs a lot faster, but may
+be more difficult to understand the internals
+
+
 ## OS requirements
 
 Sorry, but the rest of these instructions are written with Linux in mind.
