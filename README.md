@@ -79,3 +79,17 @@ Note1: the original one is 4G. if you would like to use a 2G model file, you can
 https://civitai.com/models/6174?modelVersionId=11047
 
 Note2: If you want to use a model in safetensor format, the name must end in ".safetensor". Therefore, if you want that one to be default, you will have to edit the script to change the value of 'default_model_path'
+
+## Running pipeline_comparison.py
+
+scripts/pipeline_comparison.py was not originally in this repo. However, since this repo is now a learning tool, it is included for comparion's sake. It primarily leverages the now standard PIP module of
+diffusers.StableDiffusionPipeline
+
+It currently is not particularly configurable: it has a hardcoded prompt, and model file location
+(model.safetensors).
+If you have provided a file in that location, you can run it with
+
+    python scripts/pipeline_comparison.py
+
+It will generate a single image, and pop up a viewer to show you the result.
+
