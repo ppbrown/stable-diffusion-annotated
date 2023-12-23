@@ -1,4 +1,14 @@
 import argparse, os, sys, glob
+
+# We kinda insist that we live in the "scripts" subdir
+# of the top level for the source code repo.
+# This makes the default paths for some things
+# work out better
+current_dir = os.path.dirname(os.path.realpath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+os.chdir(parent_dir)
+sys.path.append(parent_dir)
+
 import cv2
 import torch
 import numpy as np
@@ -17,6 +27,8 @@ from contextlib import contextmanager, nullcontext
 from ldm.util import instantiate_from_config
 from ldm.models.diffusion.ddim import DDIMSampler
 from ldm.models.diffusion.plms import PLMSSampler
+
+import safetensors
 
 from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionSafetyChecker
 from transformers import AutoFeatureExtractor
@@ -48,10 +60,16 @@ def numpy_to_pil(images):
 
 def load_model_from_config(config, ckpt, verbose=False):
     print(f"Loading model from {ckpt}")
-    pl_sd = torch.load(ckpt, map_location="cpu")
+    if ckpt.endswith("safetensors"):
+        pl_sd = safetensors.torch.load_file(str(ckpt))
+    else:
+        pl_sd = torch.load(ckpt, map_location="cpu")
     if "global_step" in pl_sd:
         print(f"Global Step: {pl_sd['global_step']}")
-    sd = pl_sd["state_dict"]
+    if "state_dict" in pl_sd:
+        sd = pl_sd["state_dict"]
+    else:
+        sd = pl_sd
     model = instantiate_from_config(config.model)
     m, u = model.load_state_dict(sd, strict=False)
     if len(m) > 0 and verbose:
@@ -241,6 +259,7 @@ def main():
     model = load_model_from_config(config, f"{opt.ckpt}")
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    print(f"Using device={device}")
     model = model.to(device)
 
     if opt.plms:
