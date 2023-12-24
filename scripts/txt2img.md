@@ -68,12 +68,14 @@ The most interesting/important config file items are:
 
 Ignoring the silly watermarking and "safety check", the code roughly does the following:
 
-1. Load the python object class for the main model, mentioned in the config (model.target)
-2. Somehow move that "model" into GPU space.
-3. Generate an initial "empty" latent image of appropriate size
-4. Initialize a "sampler" objedct (usually of type DDIMSampler)
-5. Generate "conditioning" data objects fromn the prommpts (saved to var "c" )
-6. Pass the latent image(s) into the sampler.
+1. Load the model file, aka the "checkpoint", as a tensor collection called a "state dictionary" (sd)
+2. Load the python object class for the main model, mentioned in the config (model.target)
+3. Load  "sd" into the model object.
+4. Move that "model" into GPU memory space.
+5. Generate an initial "empty" latent image of appropriate size
+6. Initialize a "sampler" objedct (usually of type DDIMSampler)
+7. Generate "conditioning" data objects fromn the prommpts (saved to var "c" )
+8. Pass the latent image(s) into the sampler.
  (Reminder: this is local python object ldm.models.diffusion.ddim.DDIMSampler )
-7. (Sampler does a magic loop)
-8. Convert the results in latent image back into "normal image" size and color scheme,  model.decode_first_stage()
+9. (Sampler does a magic loop)
+10. Convert the results in latent image back into "normal image" size and color scheme,  model.decode_first_stage()
