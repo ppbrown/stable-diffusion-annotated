@@ -58,10 +58,13 @@ def numpy_to_pil(images):
     return pil_images
 
 
-def load_model_from_config(config, ckpt, verbose=False):
+def load_model_from_config(config, ckpt, device, verbose=False):
     print(f"Loading model from {ckpt}")
     if ckpt.endswith("safetensors"):
         pl_sd = safetensors.torch.load_file(str(ckpt))
+        #with open(str(ckpt),"rb") as fobj:
+        #    data = fobj.read()
+        #    pl_sd = safetensors.torch.load(data)
     else:
         pl_sd = torch.load(ckpt, map_location="cpu")
     if "global_step" in pl_sd:
@@ -256,11 +259,17 @@ def main():
     seed_everything(opt.seed)
 
     config = OmegaConf.load(f"{opt.config}")
-    model = load_model_from_config(config, f"{opt.ckpt}")
 
+    print("DEBUG 1 ####")
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     print(f"Using device={device}")
+
+    model = load_model_from_config(config, f"{opt.ckpt}",device)
+
+    # Done in load_model
+    print("Doing 'to'")
     model = model.to(device)
+    print("DONE")
 
     if opt.plms:
         sampler = PLMSSampler(model)
